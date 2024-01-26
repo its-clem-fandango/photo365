@@ -1,0 +1,24 @@
+{
+  "name": "donewithit",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "photo community app",
+  "type": "module",
+  "_comment": "My server wouldn't run after installing everything because I didn't have type modules in my package.json. I did everything manually, maybe I should have run yarn init to create the package.json. This comment can be deleted",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.8.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "global": "^4.4.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.3"
+  },
+  "devDependencies": {
+    "prisma": "^5.8.1"
+  },
+  "author": "juneau dahl"
+}
