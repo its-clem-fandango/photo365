@@ -11,6 +11,7 @@ import {
 import * as MediaLibrary from "expo-media-library";
 import { shareAsync } from "expo-sharing";
 import { StatusBar } from "expo-status-bar";
+import { ref, getStorage, uploadBytes } from "firebase/storage";
 
 export default function HomePage() {
   let cameraRef = useRef(null);
@@ -46,8 +47,19 @@ export default function HomePage() {
     };
 
     let newPhoto = await cameraRef.current.takePictureAsync(options);
-
     setPhoto(newPhoto);
+    try {
+      // Convert the image to a blob and upload it
+      const response = await fetch(newPhoto.uri);
+      const blob = await response.blob();
+      const storage = getStorage();
+      const imageRef = ref(storage, `images/${new Date().toISOString()}`);
+
+      await uploadBytes(imageRef, blob);
+      console.log("Image uploaded successfully");
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
   };
 
   if (photo) {

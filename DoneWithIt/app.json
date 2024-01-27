@@ -14,14 +14,20 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
+      "googleServicesFile": "./GoogleService-info.plist",
+      "bundleIdentifier": "com.juneau.DoneWithIt",
+      "useFrameworks": "static",
       "supportsTablet": true
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
+      "package": "com.juneau.DoneWithIt",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#FFFFFF"
       }
     },
+
     "web": {
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
@@ -42,7 +48,8 @@
           "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera.",
           "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone."
         }
-      ]
+      ],
+      "@react-native-firebase/app"
     ]
   }
 }

@@ -21,10 +21,10 @@ app.use(morgan("dev"));
 // JSON middleware to parse JSON request bodies
 app.use(express.json());
 
-// Server Test Route
-app.get("/", (req, res) => {
-  res.send("Hello, World!");
-});
+// Import Router file
+import router from "./routes.js";
+// Set up the router as middleware to handle specific routes
+app.use("/", router);
 
 // Start the Express server
 const PORT = process.env.PORT || 3000;

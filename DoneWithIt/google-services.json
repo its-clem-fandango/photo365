@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "804995097809",
+    "project_id": "donewithit-912b6",
+    "storage_bucket": "donewithit-912b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:804995097809:android:4d257234f8bc06229451f0",
+        "android_client_info": {
+          "package_name": "com.juneau.DoneWithIt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUBhZP13bRNtpECDhPs02WLsIWg1PdJEM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
