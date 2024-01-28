@@ -5,6 +5,7 @@ import ImageViewer from "./components/ImageViewer";
 import Button from "./components/Button";
 import * as ImagePicker from "expo-image-picker";
 import { useState } from "react";
+import "../DoneWithIt/firebaseConfig";
 
 export default function App() {
   const [selectedImage, setSelectedImage] = useState(null);

@@ -11,7 +11,10 @@ import {
 import * as MediaLibrary from "expo-media-library";
 import { shareAsync } from "expo-sharing";
 import { StatusBar } from "expo-status-bar";
-import { ref, getStorage, uploadBytes } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "../../firebaseConfig";
+
+import { createPost } from "../post-fetch";
 
 export default function HomePage() {
   let cameraRef = useRef(null);
@@ -43,20 +46,35 @@ export default function HomePage() {
     let options = {
       quality: 1,
       base64: true,
-      exif: false,
+      exif: true,
     };
 
     let newPhoto = await cameraRef.current.takePictureAsync(options);
     setPhoto(newPhoto);
+
     try {
-      // Convert the image to a blob and upload it
+      // Convert the image to a blob
       const response = await fetch(newPhoto.uri);
       const blob = await response.blob();
-      const storage = getStorage();
-      const imageRef = ref(storage, `images/${new Date().toISOString()}`);
 
+      // Get the storage reference and upload the image
+      const imageRef = ref(storage, `images/${new Date().toISOString()}`);
       await uploadBytes(imageRef, blob);
       console.log("Image uploaded successfully");
+
+      // Get the download URL after the image is uploaded
+      const downloadURL = await getDownloadURL(imageRef);
+
+      // Prepare post data
+      const postData = {
+        title: "New Post",
+        imageURL: downloadURL,
+        date: new Date().toISOString().split("T")[0],
+      };
+
+      // Send the post data to your backend
+      const postResponse = await createPost(postData);
+      console.log("Post Created", postResponse);
     } catch (error) {
       console.error("Error uploading image:", error);
     }

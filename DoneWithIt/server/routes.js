@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
   res.send("Hello, World!");
 });
 
-router.post("/", createPost);
+router.post("/posts", createPost);
 /* router.get("/date/:date", getPostsByDate);
  */ router.get("/posts", getAllPosts);
 /* router.get("/scroll/:date", scrollLoad);
