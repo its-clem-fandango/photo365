@@ -64,15 +64,15 @@ export default function HomePage() {
 
       // Get the download URL after the image is uploaded
       const downloadURL = await getDownloadURL(imageRef);
-
+      console.log(downloadURL);
       // Prepare post data
       const postData = {
         title: "New Post",
         imageURL: downloadURL,
-        date: new Date().toISOString().split("T")[0],
       };
 
       // Send the post data to your backend
+      console.log(postData);
       const postResponse = await createPost(postData);
       console.log("Post Created", postResponse);
     } catch (error) {

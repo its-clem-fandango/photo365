@@ -6,14 +6,10 @@ const prisma = new PrismaClient();
 
 export async function createPost(req, res) {
   try {
-    const { title, imageURL, date } = req.body;
+    const { title, imageURL } = req.body;
 
     // Validation (you can enhance this as needed)
-    if (
-      typeof imageURL !== "string" ||
-      typeof title !== "string" ||
-      typeof date !== "string"
-    ) {
+    if (typeof imageURL !== "string" || typeof title !== "string") {
       return res.status(400).send("Invalid data provided");
     }
 
@@ -21,7 +17,6 @@ export async function createPost(req, res) {
       data: {
         title,
         imageURL,
-        date, // Ensure your Prisma schema has a field for date
       },
     });
     res.status(201).json(newPost);
